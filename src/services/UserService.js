@@ -1,3 +1,4 @@
+// handles all http communication with backend apis for the application
 import authHeader from "../helpers/Auth-Header";
 
 // export const userService = {
@@ -14,7 +15,7 @@ export const login = (username, password) => {
   };
 
   //! Change this to the API location
-  return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
+  return fetch(`http://localhost:4000/users/authenticate`, requestOptions)
     .then(handleResponse)
     .then((user) => {
       // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -36,9 +37,12 @@ export const getAll = () => {
   };
 
   //! Change this to the API location
-  return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
+  return fetch(`http://localhost:4000/users`, requestOptions).then(
+    handleResponse
+  );
 }
 
+// checks if the http response from the api is 401 Unauthorized and automatically logs the user out.
 const handleResponse = (response) => {
 
   return response.text().then((text) => {
