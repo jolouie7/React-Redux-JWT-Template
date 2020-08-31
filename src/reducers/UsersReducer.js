@@ -1,6 +1,6 @@
 // The redux users reducer manages the users section of the application state
 // which is used by the HomePage to display a list of users and enable deleting of users.
-import userConstants from "../constants/UserConstants";
+import {userConstants} from "../constants/UserConstants";
 
 export const users = (state = {}, action) => {
   switch (action.type) {

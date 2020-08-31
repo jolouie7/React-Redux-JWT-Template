@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 // Custom Imports
-import history from "./helpers/history";
-import alertActions from "./actions/AlertActions";
+import {history} from "./helpers/history";
+import * as alertActions from "./actions/AlertActions";
 import PrivateRoute from "./components/PrivateRoute";
-// import { HomePage } from "../HomePage";
-// import { LoginPage } from "../LoginPage";
+import HomePage from "./components/HomePage/HomePage";
+import LoginPage from "./components/LoginPage/LoginPage";
 
 const App = (props) => {
   const { dispatch } = props;
@@ -18,9 +18,9 @@ const App = (props) => {
   const { alert } = props;
   return (
     <div>
-      {alert.message && (
+      {/* {alert.message && (
         <div className={`alert ${alert.type}`}>{alert.message}</div>
-      )}
+      )} */}
       <Router history={history}>
         <Switch>
           <PrivateRoute exact path="/" component={HomePage} />

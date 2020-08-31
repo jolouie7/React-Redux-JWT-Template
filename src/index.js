@@ -6,6 +6,10 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducers/RootReducer";
 
+// setup fake backend
+import { configureFakeBackend } from './helpers/fake-backend';
+configureFakeBackend();
+
 // This allows you to use Redux dev tools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middleware = [thunk];

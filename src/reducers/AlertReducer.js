@@ -1,4 +1,4 @@
-import alertConstants from "../constants/AlertConstants";
+import {alertConstants} from "../constants/AlertConstants";
 
 export const alert = (state = {}, action) => {
   switch (action.type) {

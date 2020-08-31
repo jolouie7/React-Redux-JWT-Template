@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import userActions from "../../actions/UserActions";
+import * as userActions from "../../actions/UserActions";
 
 const LoginPage = (props) => {
   const [user, setUser] = useState({
@@ -16,18 +16,18 @@ const LoginPage = (props) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUser({ [name]: value });
+    setUser({ ...user, [name]: value });
   }
 
   const handleSubmit = (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
-      setUser({ submitted: true });
-      const { username, password } = user;
-      const { dispatch } = props;
-      if (username && password) {
-          dispatch(userActions.login(username, password));
-      }
+    setUser({ ...user, submitted: true });
+    const { username, password } = user;
+    const { dispatch } = props;
+    if (username && password) {
+      dispatch(userActions.login(username, password));
+    }
   }
 
   const { loggingIn } = props;
@@ -65,7 +65,7 @@ const LoginPage = (props) => {
             className="form-control"
             name="password"
             value={password}
-            onChange={this.handleChange}
+            onChange={handleChange}
           />
           {submitted && !password && (
             <div className="help-block">Password is required</div>

@@ -1,7 +1,7 @@
-import userConstants from "../constants/UserConstants";
-import userService from "../services/UserService";
-import alertActions from "./AlertActions";
-import history from "../helpers/history";
+import {userConstants} from "../constants/UserConstants";
+import * as userService from "../services/UserService";
+import * as alertActions from "./AlertActions";
+import {history} from "../helpers/history";
 
 export const login = (username, password) => {
   return (dispatch) => {

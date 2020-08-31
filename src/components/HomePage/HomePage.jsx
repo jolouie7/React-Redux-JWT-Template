@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import userActions from "../../actions/UserActions";
+import * as userActions from "../../actions/UserActions";
 
 const HomePage = (props) => {
   useEffect(() => {

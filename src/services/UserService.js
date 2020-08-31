@@ -1,5 +1,6 @@
 // handles all http communication with backend apis for the application
-import authHeader from "../helpers/Auth-Header";
+import {authHeader} from "../helpers/Auth-Header";
+import { history } from "../helpers/history";
 
 // export const userService = {
 //   login,
@@ -51,7 +52,8 @@ const handleResponse = (response) => {
       if (response.status === 401) {
         // auto logout if 401 response returned from api
         logout();
-        location.reload(true);
+        // location.reload(true);
+        history.push("/");
       }
 
       const error = (data && data.message) || response.statusText;
