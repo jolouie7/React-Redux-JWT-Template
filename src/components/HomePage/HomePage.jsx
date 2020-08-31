@@ -9,6 +9,11 @@ const HomePage = (props) => {
     props.dispatch(userActions.getAll());
   }, [])
 
+  const handleClick = () => {
+    console.log("here")
+    props.dispatch(userActions.logout());
+  }
+
   const { user, users } = props;
   return (
     <div>
@@ -16,9 +21,7 @@ const HomePage = (props) => {
       <p>You're logged in with React & JWT!!</p>
       <h3>Users from secure api end point:</h3>
       {users.loading && <em>Loading users...</em>}
-      {users.error && (
-        <span className="text-danger">ERROR: {users.error}</span>
-      )}
+      {users.error && <span className="text-danger">ERROR: {users.error}</span>}
       {users.items && (
         <ul>
           {users.items.map((user, index) => (
@@ -27,7 +30,9 @@ const HomePage = (props) => {
         </ul>
       )}
       <p>
-        <Link to="/login">Logout</Link>
+        <Link to="/login" onClick={handleClick}>
+          Logout
+        </Link>
       </p>
     </div>
   );
