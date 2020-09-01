@@ -7,6 +7,7 @@ import * as alertActions from "./actions/AlertActions";
 import PrivateRoute from "./components/PrivateRoute";
 import HomePage from "./components/HomePage/HomePage";
 import LoginPage from "./components/LoginPage/LoginPage";
+import SignupPage from "./components/SignupPage/SignupPage";
 
 const App = (props) => {
   const { dispatch } = props;
@@ -25,6 +26,7 @@ const App = (props) => {
         <Switch>
           <PrivateRoute exact path="/" component={HomePage} />
           <Route path="/login" component={LoginPage} />
+          <Route path="/signup" component={SignupPage} />
         </Switch>
       </Router>
     </div>
