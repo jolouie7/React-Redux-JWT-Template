@@ -10,25 +10,26 @@ const HomePage = (props) => {
   }, [])
 
   const handleClick = () => {
-    console.log("here")
     props.dispatch(userActions.logout());
   }
 
   const { user, users } = props;
   return (
     <div>
-      <h1>Hi {user.firstName}!</h1>
+      {/* <h1>Hi {user.firstName}!</h1> */}
       <p>You're logged in with React & JWT!!</p>
       <h3>Users from secure api end point:</h3>
       {users.loading && <em>Loading users...</em>}
-      {users.error && <span className="text-danger">ERROR: {users.error}</span>}
-      {users.items && (
+      {/* {users.error && <span className="text-danger">ERROR: {users.error}</span>} */}
+      {/* {users.items && (
         <ul>
           {users.items.map((user, index) => (
-            <li key={user.id}>{user.firstName + " " + user.lastName}</li>
+            // <li key={user.id}>{user.firstName + " " + user.lastName}</li>
+            <li key={user.id}>{user.firstName + " " + user.lastName + " " + user.email}</li>
           ))}
         </ul>
-      )}
+      )} */}
+      <h1>{user.email}</h1>
       <p>
         <Link to="/login" onClick={handleClick}>
           Logout
@@ -38,7 +39,6 @@ const HomePage = (props) => {
   );
 }
 
-// authentication or auth
 const mapStateToProps = (state) => {
   const { users, authentication } = state;
   const { user } = authentication;

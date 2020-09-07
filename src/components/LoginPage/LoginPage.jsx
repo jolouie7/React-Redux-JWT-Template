@@ -6,7 +6,7 @@ import * as userActions from "../../actions/UserActions";
 
 const LoginPage = (props) => {
   const [user, setUser] = useState({
-    username: "",
+    email: "",
     password: "",
     submitted: false,
   });
@@ -23,15 +23,15 @@ const LoginPage = (props) => {
     e.preventDefault();
 
     setUser({ ...user, submitted: true });
-    const { username, password } = user;
+    const { email, password } = user;
     const { dispatch } = props;
-    if (username && password) {
-      dispatch(userActions.login(username, password));
+    if (email && password) {
+      dispatch(userActions.login(email, password));
     }
   }
 
   const { loggingIn } = props;
-  const { username, password, submitted } = user;
+  const { email, password, submitted } = user;
 
   return (
     <div>
@@ -39,19 +39,19 @@ const LoginPage = (props) => {
       <form name="form" onSubmit={handleSubmit}>
         <div
           className={
-            "form-group" + (submitted && !username ? " has-error" : "")
+            "form-group" + (submitted && !email ? " has-error" : "")
           }
         >
-          <label htmlFor="username">Username</label>
+          <label htmlFor="email">Email</label>
           <input
             type="text"
             className="form-control"
-            name="username"
-            value={username}
+            name="email"
+            value={email}
             onChange={handleChange}
           />
-          {submitted && !username && (
-            <div className="help-block">Username is required</div>
+          {submitted && !email && (
+            <div className="help-block">Email is required</div>
           )}
         </div>
         <div
@@ -78,11 +78,11 @@ const LoginPage = (props) => {
           )}
         </div>
       </form>
+      <Link to="/signup">Sign Up</Link>
     </div>
   );
 }
 
-// authentication or auth
 function mapStateToProps(state) {
   const { loggingIn } = state.authentication;
   return {

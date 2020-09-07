@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "password": "test",
+      "password_confirmation": "test",
+      "email": "test@gmail.com"
+    },
+    {
+      "email": "joe@gmail.com",
+      "password": "joe",
+      "id": 2
+    },
+    {
+      "email": "joe@gmail.com",
+      "password": "joe",
+      "id": 3
+    },
+    {
+      "email": "joseph@gmail.com",
+      "password": "joseph",
+      "password_confirmation": "joseph",
+      "id": 4
+    },
+    {
+      "email": "joe@gmail.com",
+      "password": "joe",
+      "id": 5
+    },
+    {
+      "email": "joe@gmail.com",
+      "password": "joe",
+      "id": 6
+    },
+    {
+      "email": "joe@gmail.com",
+      "password": "joe",
+      "id": 7
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -3,12 +3,15 @@ import * as userService from "../services/UserService";
 import * as alertActions from "./AlertActions";
 import {history} from "../helpers/history";
 
-export const login = (username, password) => {
+export const login = (email, password) => {
+  console.log("email:", email)
+  console.log("password:", password)
   return (dispatch) => {
-    dispatch(request({ username }));
+    dispatch(request({ email }));
 
-    userService.login(username, password).then(
+    userService.login(email, password).then(
       (user) => {
+        console.log(user)
         dispatch(success(user));
         history.push("/");
         window.location.reload(true);
@@ -30,6 +33,37 @@ export const login = (username, password) => {
     return { type: userConstants.LOGIN_FAILURE, error };
   }
 }
+
+export const signup = (email, password, password_confirmation) => {
+  return (dispatch) => {
+    // debugger
+    dispatch(request({ email }));
+
+    userService
+      .signup(email, password, password_confirmation)
+      .then(
+        (user) => {
+          dispatch(success(user));
+          history.push("/");
+          window.location.reload(true);
+        },
+        (error) => {
+          dispatch(failure(error));
+          dispatch(alertActions.error(error));
+        }
+      );
+  };
+
+  function request(user) {
+    return { type: userConstants.SIGNUP_BEGIN, user };
+  }
+  function success(user) {
+    return { type: userConstants.SIGNUP_SUCCESS, user };
+  }
+  function failure(error) {
+    return { type: userConstants.SIGNUP_FAILURE, error };
+  }
+};
 
 export const logout = () => {
   userService.logout();

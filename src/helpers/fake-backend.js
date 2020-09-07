@@ -2,7 +2,7 @@ export const configureFakeBackend = () => {
   let users = [
     {
       id: 1,
-      username: "test",
+      email: "test",
       password: "test",
       firstName: "Test",
       lastName: "User",
@@ -21,7 +21,7 @@ export const configureFakeBackend = () => {
           // find if any user matches login credentials
           let filteredUsers = users.filter((user) => {
             return (
-              user.username === params.username &&
+              user.email === params.email &&
               user.password === params.password
             );
           });
@@ -31,7 +31,7 @@ export const configureFakeBackend = () => {
             let user = filteredUsers[0];
             let responseJson = {
               id: user.id,
-              username: user.username,
+              email: user.email,
               firstName: user.firstName,
               lastName: user.lastName,
               token: "fake-jwt-token",
@@ -42,7 +42,7 @@ export const configureFakeBackend = () => {
             });
           } else {
             // else return error
-            reject("Username or password is incorrect");
+            reject("Email or password is incorrect");
           }
 
           return;

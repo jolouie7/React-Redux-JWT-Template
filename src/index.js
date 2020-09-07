@@ -7,8 +7,8 @@ import { Provider } from "react-redux";
 import reducer from "./reducers/RootReducer";
 
 // setup fake backend
-import { configureFakeBackend } from './helpers/fake-backend';
-configureFakeBackend();
+// import { configureFakeBackend } from './helpers/fake-backend';
+// configureFakeBackend();
 
 // This allows you to use Redux dev tools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
