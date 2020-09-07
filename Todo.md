@@ -7,7 +7,7 @@
 [x] find out how to display the user's email on the homepage
 [x] when logging out remove token from localstorage
 [] do something with redux store items still being there after logout
-[] the DB doesn't contain user's passwords, should the DB store hashed passwords?
+[] store hashed password in db
 [] have alerts that notify the user if the email is already taken or the password correct, etc
 
 - Steps sign up a new user
