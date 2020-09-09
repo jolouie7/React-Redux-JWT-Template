@@ -6,6 +6,7 @@ import * as userActions from "../../actions/UserActions";
 
 const SignupPage = (props) => {
   const [user, setUser] = useState({
+    username: "",
     email: "",
     password: "",
     password_confirmation: "",
@@ -21,16 +22,19 @@ const SignupPage = (props) => {
     e.preventDefault();
 
     setUser({ ...user, submitted: true });
-    const { email, password } = user;
+    const { username, email, password, password_confirmation } = user;
     const { dispatch } = props;
-    if (email && password) {
+    if (username && email && password && password_confirmation) {
       // debugger
-      dispatch(userActions.signup(email, password, password_confirmation));
+      dispatch(
+        userActions.signup(username, email, password, password_confirmation)
+      );
     }
   };
 
   const { loggingIn } = props;
   const {
+    username,
     email,
     password,
     password_confirmation,
@@ -41,6 +45,23 @@ const SignupPage = (props) => {
     <div>
       <h2>Sign Up</h2>
       <form name="form" onSubmit={handleSubmit}>
+        <div
+          className={
+            "form-group" + (submitted && !username ? " has-error" : "")
+          }
+        >
+          <label htmlFor="email">Username</label>
+          <input
+            type="text"
+            className="form-control"
+            name="username"
+            value={username}
+            onChange={handleChange}
+          />
+          {submitted && !username && (
+            <div className="help-block">Username is required</div>
+          )}
+        </div>
         <div
           className={
             "form-group" + (submitted && !email ? " has-error" : "")

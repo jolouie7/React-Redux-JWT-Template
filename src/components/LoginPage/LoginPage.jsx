@@ -6,7 +6,7 @@ import * as userActions from "../../actions/UserActions";
 
 const LoginPage = (props) => {
   const [user, setUser] = useState({
-    email: "",
+    username: "",
     password: "",
     submitted: false,
   });
@@ -23,15 +23,15 @@ const LoginPage = (props) => {
     e.preventDefault();
 
     setUser({ ...user, submitted: true });
-    const { email, password } = user;
+    const { username, password } = user;
     const { dispatch } = props;
-    if (email && password) {
-      dispatch(userActions.login(email, password));
+    if (username && password) {
+      dispatch(userActions.login(username, password));
     }
   }
 
   const { loggingIn } = props;
-  const { email, password, submitted } = user;
+  const { username, password, submitted } = user;
 
   return (
     <div>
@@ -39,19 +39,19 @@ const LoginPage = (props) => {
       <form name="form" onSubmit={handleSubmit}>
         <div
           className={
-            "form-group" + (submitted && !email ? " has-error" : "")
+            "form-group" + (submitted && !username ? " has-error" : "")
           }
         >
-          <label htmlFor="email">Email</label>
+          <label htmlFor="username">Username</label>
           <input
             type="text"
             className="form-control"
-            name="email"
-            value={email}
+            name="username"
+            value={username}
             onChange={handleChange}
           />
-          {submitted && !email && (
-            <div className="help-block">Email is required</div>
+          {submitted && !username && (
+            <div className="help-block">Username is required</div>
           )}
         </div>
         <div

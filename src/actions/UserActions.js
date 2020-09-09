@@ -3,13 +3,13 @@ import * as userService from "../services/UserService";
 import * as alertActions from "./AlertActions";
 import {history} from "../helpers/history";
 
-export const login = (email, password) => {
-  console.log("email:", email)
+export const login = (username, password) => {
+  console.log("username:", username)
   console.log("password:", password)
   return (dispatch) => {
-    dispatch(request({ email }));
+    dispatch(request({ username }));
 
-    userService.login(email, password).then(
+    userService.login(username, password).then(
       (user) => {
         console.log(user)
         dispatch(success(user));
@@ -34,13 +34,13 @@ export const login = (email, password) => {
   }
 }
 
-export const signup = (email, password, password_confirmation) => {
+export const signup = (username, email, password, password_confirmation) => {
   return (dispatch) => {
     // debugger
-    dispatch(request({ email }));
+    dispatch(request({ username }));
 
     userService
-      .signup(email, password, password_confirmation)
+      .signup(username, email, password, password_confirmation)
       .then(
         (user) => {
           dispatch(success(user));

@@ -8,11 +8,11 @@ import {authHeader} from "../helpers/Auth-Header";
 //   getAll,
 // };
 
-export const login = (email, password) => {
+export const login = (username, password) => {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ username, password }),
   };
 
   //! Change this to the API location
@@ -20,7 +20,7 @@ export const login = (email, password) => {
   return fetch(`http://127.0.0.1:8000/dj-rest-auth/login/`, requestOptions)
     .then(handleResponse)
     .then((user) => {
-      debugger
+      // debugger
       localStorage.setItem("token", JSON.stringify(user.access_token));
       // store user details and jwt token in local storage to keep user logged in between page refreshes
       localStorage.setItem("user", JSON.stringify(user.user));
@@ -30,7 +30,7 @@ export const login = (email, password) => {
     });
 }
 
-export const signup = (email, password, password_confirmation) => {
+export const signup = (username, email, password, password_confirmation) => {
   const password1 = password;
   const password2 = password_confirmation;
 
@@ -38,6 +38,7 @@ export const signup = (email, password, password_confirmation) => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
+      username,
       email,
       password1,
       password2,

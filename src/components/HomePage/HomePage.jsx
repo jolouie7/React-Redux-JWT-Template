@@ -29,7 +29,8 @@ const HomePage = (props) => {
           ))}
         </ul>
       )} */}
-      <h1>{user.email}</h1>
+      <h1>Username: {user.username}</h1>
+      <h1>Email: {user.email}</h1>
       <p>
         <Link to="/login" onClick={handleClick}>
           Logout
